@@ -47,5 +47,8 @@ class Flat(models.Model):
         blank=True,
         db_index=True)
 
+class User(models.Model):
+
+
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
