@@ -79,3 +79,18 @@ class Report(models.Model):
 
     def __str__(self):
         return f'{self.username}, {self.flat}'
+
+
+class Owner(models.Model):
+    full_name = models.CharField(blank=True, null=True, default='', max_length=50, verbose_name="ФИО")
+    owners_phonenumber = models.CharField('Номер владельца', max_length=20, default=0, null=True, blank=True)
+    owner_pure_phone = PhoneNumberField(
+        verbose_name='Номер нормализованный владельца',
+        blank=True,
+    )
+    flats = models.ForeignKey(
+        Flat,
+        on_delete=models.CASCADE,
+        verbose_name="Квартиры в собственности",
+        related_name="Собственник"
+    )
