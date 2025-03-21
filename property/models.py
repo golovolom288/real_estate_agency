@@ -82,15 +82,16 @@ class Report(models.Model):
 
 
 class Owner(models.Model):
-    full_name = models.CharField(blank=True, null=True, default='', max_length=50, verbose_name="ФИО")
-    owners_phonenumber = models.CharField('Номер владельца', max_length=20, default=0, null=True, blank=True)
+    full_name = models.CharField(blank=True, null=True, default='', max_length=50, verbose_name="ФИО", db_index=True)
+    owners_phonenumber = models.CharField('Номер владельца', max_length=20, default=0, null=True, blank=True, db_index=True)
     owner_pure_phone = PhoneNumberField(
         verbose_name='Номер нормализованный владельца',
         blank=True,
+        db_index=True
     )
-    flats = models.ForeignKey(
+    flats = models.ManyToManyField(
         Flat,
-        on_delete=models.CASCADE,
         verbose_name="Квартиры в собственности",
-        related_name="Собственник"
+        related_name="Собственник",
+        blank=True
     )

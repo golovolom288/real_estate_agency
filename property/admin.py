@@ -17,6 +17,7 @@ class ReportAdmin(admin.ModelAdmin):
     raw_id_fields = ("flat",)
     list_display = ('flat', 'username', 'report')
 
+
 @admin.register(Owner)
 class OwnerAdmin(admin.ModelAdmin):
     raw_id_fields = ("flats",)
