@@ -14,7 +14,7 @@ def normalize_phone_numbers(apps, schema_editor):
                     normalized_number = phonenumbers.format_number(parsed_number, phonenumbers.PhoneNumberFormat.E164)
                     flat.pure_phone = normalized_number
                     flat.save()
-            except phonenumbers.phonenumberutil.NumberParseException:
+            except phonenumbers.phonenumberutil.NumberFormatException:
                 pass
 
 
