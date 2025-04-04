@@ -5,8 +5,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Flat(models.Model):
-    owner = models.CharField('ФИО владельца', max_length=200)
-    phonenumber = models.CharField('Номер владельца', max_length=20)
     new_building = models.BooleanField(
         'Новостройка',
         default=None,
@@ -92,4 +90,3 @@ class Owner(models.Model):
 
     def __str__(self):
         return self.owner
-    
