@@ -91,4 +91,5 @@ class Owner(models.Model):
     apartments = models.ManyToManyField('Flat', verbose_name='Квартиры в собственности', related_name='owners', blank=True)
 
     def __str__(self):
-        return self.host
+        return self.owner
+    
