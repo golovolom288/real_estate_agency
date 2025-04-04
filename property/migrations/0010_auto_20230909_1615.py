@@ -1,8 +1,9 @@
 from django.db import migrations
-from property.models import Flat, Owner
 
 
 def copy_data_from_flat_to_owner(apps, schema_editor):
+    Flat = apps.get_model("Flat")
+    Owner = apps.get_model("Owner")
     for flat in Flat.objects.all():
         owner, created = Owner.objects.get_or_create(
             owner=flat.owner,
